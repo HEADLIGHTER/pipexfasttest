@@ -5,6 +5,8 @@ PIPEXPATH="../pipex"
 TESTPATH="../pipexfasttest"
 OUTPATH="../pipexfasttest/outs"
 
+cd $PIPEXPATH && make
+
 cd $PIPEXPATH && ./pipex $TESTPATH/infile "ls -l" "wc -l" $OUTPATH/out1
 cd $PIPEXPATH && ./pipex $TESTPATH/infile "grep a" "wc -w" $OUTPATH/out2
 cd $PIPEXPATH && ./pipex $TESTPATH/infile "ls -slslksdfow" "wc -cmlw" $OUTPATH/out3
