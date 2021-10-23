@@ -46,7 +46,7 @@ echo Test5
 echo Pipex out:
 cat $OUTPATH/out5
 echo System out:
-< $TESTPATH/infile  who -b | grep -v boot
+< $TESTPATH/infile  who -b | grep -v Reprogramme
 echo -------------------------------------
 
 echo
@@ -67,6 +67,10 @@ echo -------------------------------------
 
 echo
 echo Error 3: Wrong input file
-cd $PIPEXPATH && ./pipex $TESTPATH/ouch "grep -a" "ls -a" $OUTPATH/out7
+cd $PIPEXPATH && ./pipex $TESTPATH/ouch "grep -v ouch" "ls -a" $OUTPATH/out7
 echo -------------------------------------
 
+echo
+echo Error 4: Wrong command
+cd $PIPEXPATH && ./pipex $TESTPATH/infile "weewee" "wc -w" $OUTPATH/out6
+echo -------------------------------------
