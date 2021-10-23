@@ -46,5 +46,27 @@ echo Test5
 echo Pipex out:
 cat $OUTPATH/out5
 echo System out:
-< $TESTPATH/infile  who -b | grep -v Reprogramme
+< $TESTPATH/infile  who -b | grep -v boot
 echo -------------------------------------
+
+echo
+
+echo ------------------
+echo '|' Error handling '|'
+echo ------------------
+echo
+echo Error 1: Wrong number of arguments
+cd $PIPEXPATH && ./pipex $TESTPATH/infile "wc -w" "ls -a" 
+echo -------------------------------------
+
+echo
+echo Error 2: Wrong keys
+cd $PIPEXPATH && ./pipex $TESTPATH/infile "" "ls -abdsnj" $OUTPATH/out6
+cat $OUTPATH/out6
+echo -------------------------------------
+
+echo
+echo Error 3: Wrong input file
+cd $PIPEXPATH && ./pipex $TESTPATH/ouch "grep -a" "ls -a" $OUTPATH/out7
+echo -------------------------------------
+
